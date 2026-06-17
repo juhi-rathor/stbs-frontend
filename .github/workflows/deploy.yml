@@ -2,7 +2,7 @@ name: Deploy Next.js to GitHub Pages
 
 on:
   push:
-    branches: ["main"] # Jab aap main branch par push karenge tab ye run hoga
+    branches: ["main"] 
 
 permissions:
   contents: read
