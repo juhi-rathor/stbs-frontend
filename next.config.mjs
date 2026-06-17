@@ -1,11 +1,11 @@
 /** @type {import('next').NextConfig} */
+const isGithubActions = process.env.GITHUB_ACTIONS === 'true';
+
 const nextConfig = {
-  /* config options here */
   reactStrictMode: false,
   reactCompiler: true,
-
-  output: 'export',
-  basePath: '/stbs-frontend',
+  output: isGithubActions ? 'export' : undefined,
+  basePath: isGithubActions ? '/stbs-frontend' : '',
   images: {
     unoptimized: true,
   },
