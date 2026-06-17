@@ -5,6 +5,7 @@ const nextConfig = {
   reactCompiler: true,
 
   output: 'export',
+  basePath: '/stbs-frontend',
   images: {
     unoptimized: true,
   },
