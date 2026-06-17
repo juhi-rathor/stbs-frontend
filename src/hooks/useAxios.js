@@ -3,7 +3,7 @@
 import { useState, useCallback } from "react";
 import axios from "axios";
 
-const BASE_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:4001/api/v1";
+const BASE_URL = process.env.NEXT_PUBLIC_API_URL || "https://stbs-backend.onrender.com";
 
 // Create custom axios instance
 const axiosInstance = axios.create({
