@@ -2,24 +2,24 @@
 
 import React, { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
-import Input from "../../../components/ui/Input";
-import Button from "../../../components/ui/Button";
-import api from "../../../lib/api";
+import Input from "../../components/ui/Input";
+import Button from "../../components/ui/Button";
+import api from "../../lib/api";
 
-export default function ResetPasswordPage({ params }) {
+export default function ResetPasswordPage() {
   const router = useRouter();
-  
-  // Unwrap dynamic params promise safely for Next.js 15+
   const [token, setToken] = useState(null);
+  
+  // Extract token from query parameters client-side
   useEffect(() => {
-    if (params) {
-      Promise.resolve(params).then((resolvedParams) => {
-        if (resolvedParams && resolvedParams.token) {
-          setToken(resolvedParams.token);
-        }
-      });
+    if (typeof window !== "undefined") {
+      const params = new URLSearchParams(window.location.search);
+      const tokenParam = params.get("token");
+      if (tokenParam) {
+        setToken(tokenParam);
+      }
     }
-  }, [params]);
+  }, []);
 
   const [formData, setFormData] = useState({
     password: "",
