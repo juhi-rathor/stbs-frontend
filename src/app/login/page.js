@@ -43,10 +43,14 @@ export default function LoginPage() {
     try {
       const response = await api.post("/admin/forget-password", { email: forgotEmail });
       if (response && response.success) {
-        setForgotApiSuccess(response.message || "Password reset link sent to your email!");
+        setForgotApiSuccess(response.message || "Password reset link sent to your email! Redirecting...");
         setForgotEmail("");
-        if (response.data && response.data.token) {
-          setDebugToken(response.data.token);
+        const token = response.data?.token || response.token;
+        if (token) {
+          setDebugToken(token);
+          setTimeout(() => {
+            router.push(`/reset-password/${token}`);
+          }, 1500);
         }
       } else {
         throw new Error(response?.message || "Failed to send reset link.");
