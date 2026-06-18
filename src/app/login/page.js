@@ -248,11 +248,24 @@ export default function LoginPage() {
                     )}
 
                     {forgotApiSuccess && (
-                      <div className="p-4 text-sm text-green-700 bg-green-50 border border-green-200 rounded-xl flex items-start gap-2.5">
-                        <svg className="w-5 h-5 text-green-500 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                        </svg>
-                        <span>{forgotApiSuccess}</span>
+                      <div className="p-4 text-sm text-green-700 bg-green-50 border border-green-200 rounded-xl flex flex-col gap-2.5">
+                        <div className="flex items-start gap-2.5">
+                          <svg className="w-5 h-5 text-green-500 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                          </svg>
+                          <span>{forgotApiSuccess}</span>
+                        </div>
+                        {debugToken && (
+                          <div className="mt-2 pt-2 border-t border-green-200 flex flex-col gap-1">
+                            <span className="text-xs text-green-600 font-semibold uppercase tracking-wider">Debug Link:</span>
+                            <a
+                              href={`/reset-password/${debugToken}`}
+                              className="text-xs text-blue-600 hover:text-blue-800 underline font-medium"
+                            >
+                              Click here to go directly to reset password page
+                            </a>
+                          </div>
+                        )}
                       </div>
                     )}
 
